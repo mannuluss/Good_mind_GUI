@@ -3,19 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package good_mind_gui;
+package app.CommandPattern;
 
 /**
  *
  * @author Mannulus
  */
-public class Goodmind {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
+public interface ICommand {
+    void Action();
 }
