@@ -3,9 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Mannulus/Documents/UIS/2021/ING%20software/Good_mind_GUI/src/good_mind_gui/Home.java</file>
-            <file>file:/C:/Users/Mannulus/Documents/UIS/2021/ING%20software/Good_mind_GUI/src/good_mind_gui/Goodmind.java</file>
-            <file>file:/C:/Users/Mannulus/Documents/UIS/2021/ING%20software/Good_mind_GUI/src/good_mind_gui/Body.java</file>
+            <file>file:/C:/Users/Mannulus/Documents/UIS/2021/ING%20software/Good_mind_GUI/src/Frames/JBurbujaChat.java</file>
+            <file>file:/C:/Users/Mannulus/Documents/UIS/2021/ING%20software/Good_mind_GUI/src/Frames/JHomeuser.java</file>
+            <file>file:/C:/Users/Mannulus/Documents/UIS/2021/ING%20software/Good_mind_GUI/src/Frames/Body.java</file>
+            <file>file:/C:/Users/Mannulus/Documents/UIS/2021/ING%20software/Good_mind_GUI/src/Frames/JChat.java</file>
+            <file>file:/C:/Users/Mannulus/Documents/UIS/2021/ING%20software/Good_mind_GUI/src/Frames/JContacto.java</file>
+            <file>file:/C:/Users/Mannulus/Documents/UIS/2021/ING%20software/Good_mind_GUI/src/app/Goodmind.java</file>
         </group>
     </open-files>
 </project-private>

@@ -15,20 +15,16 @@ import app.CommandPattern.Pages;
 public class Body extends javax.swing.JFrame {
 
     /**
-     * Creates new form NewJFrame
+     * Creates new form Body
      */
     public Body() {
         initComponents();
-        Invoker.Layouts.add(new Pages("inicio", Body.home1));
-        Invoker.Layouts.add(new Pages("est", Body.estadisticas1));
-        Invoker.Layouts.add(new Pages("Huser", Body.jHomeuser1));
-        Invoker.Layouts.add(new Pages("chat", Body.jChat1));
-        Invoker.Layouts.add(new Pages("Hpro", Body.jhomepro1));
-        /*home1.ingresar_click = (new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                home1.setVisible(false);
-            }
-        });*/
+        Invoker.Layouts.add(new Pages("inicio", home1));
+        Invoker.Layouts.add(new Pages("est", estadisticas1));
+        Invoker.Layouts.add(new Pages("Huser", jHomeuser1));
+        Invoker.Layouts.add(new Pages("chat", jChat1));
+        Invoker.Layouts.add(new Pages("Hpro", jhomepro1));
+        Invoker.ChangePanel("inicio");
     }
 
     /**

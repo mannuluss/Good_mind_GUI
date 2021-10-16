@@ -16,6 +16,7 @@ public class Goodmind {
 
     public static Scanner sc = new Scanner(System.in);
     public static Usuario user;
+    public static Conversacion CurrentChat;
     /**
      * arreglo que contiene a todos los usuarios registrados en la plataforma
      */

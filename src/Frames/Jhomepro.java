@@ -124,10 +124,12 @@ public class Jhomepro extends javax.swing.JPanel {
     public void setVisible(boolean v) {
         super.setVisible(v);
         model.clear();
-        for (Conversacion chat : Goodmind.user.conversaciones) {
-            JContacto pane = new JContacto();
-            pane.name.setText(chat.ChatUser);
-            model.addElement(pane);
+        if (Goodmind.user != null) {
+            for (Conversacion chat : Goodmind.user.conversaciones) {
+                JContacto pane = new JContacto();
+                pane.name.setText(chat.ChatUser);
+                model.addElement(pane);
+            }
         }
         JList<JPanel> lista = new JList();
         lista.setModel(model);

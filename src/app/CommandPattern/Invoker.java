@@ -14,26 +14,37 @@ import java.util.List;
  * @author Mannulus
  */
 public class Invoker {
-    
+
     private static List<ICommand> cmds = new ArrayList<ICommand>();
     public static ArrayList<Pages> Layouts = new ArrayList<Pages>();
     private static String currentView = "inicio";
+    private static String prevView = "";
 
-    public void AddCmd(){
-        
+    public void AddCmd() {
+
     }
-    public static void ChangePanel(String name){
-        System.out.println(Layouts.size());
+
+    public static void ChangePanel(String name) {
+        prevView = currentView;
         currentView = name;
-        Layouts.forEach((e)->{
+        Layouts.forEach((e) -> {
             System.out.println(e.panel);
             e.panel.setVisible(e.name.equals(name));
         });
         //Body.home1.setVisible(false);
         //Body.estadisticas1.setVisible(true);
     }
-    public static void Back(){
-        Body.home1.setVisible(true);
-        Body.estadisticas1.setVisible(false);
+
+    public static void Back() {
+        System.out.println(prevView);
+        Layouts.forEach((e) -> {
+            if (e.name.equals(prevView)) {
+                e.panel.setVisible(true);
+            } else if (e.name.equals(currentView)) {
+                e.panel.setVisible(false);
+            }
+        });
+        //Body.home1.setVisible(true);
+        //Body.estadisticas1.setVisible(false);
     }
 }
