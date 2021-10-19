@@ -8,9 +8,13 @@ package Frames;
 import app.CommandPattern.Invoker;
 import app.Conversacion;
 import app.Goodmind;
+import app.Mensaje;
+import app.Role;
 import app.TypeMenssage;
+import app.emociones;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -24,16 +28,38 @@ public class JChat extends javax.swing.JPanel {
      */
     public JChat() {
         initComponents();
-        
-        DefaultListModel model = new DefaultListModel();
-        JBurbujaChat pane = new JBurbujaChat();
-        pane.setTypeChat(TypeMenssage.text);
-        model.addElement(pane);
-        JList<JPanel > lista = new JList();
-        lista.setModel(model);
-        lista.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        lista.setCellRenderer(new PanelRenderer());
-        jScrollPane2.setViewportView(lista);
+    }
+
+    @Override
+    public void setVisible(boolean v) {
+        super.setVisible(v);
+        setMensajes();
+        if (Goodmind.user != null) {
+            jButton2.setVisible(Goodmind.user.role == Role.usuario);
+            jButton4.setVisible(Goodmind.user.role == Role.usuario);
+        }
+    }
+
+    public void setMensajes() {
+        jListMensajes.removeAll();
+        if (Goodmind.CurrentChat == null) {
+            return;
+        }
+        jLabel1.setText(Goodmind.CurrentChat.ChatUser);
+        for (Mensaje msj : Goodmind.CurrentChat.chat) {
+            if (msj.tipo == TypeMenssage.voice) {
+                jListMensajes.add(new JBurbujaVoice(msj));
+            }
+            if (msj.tipo == TypeMenssage.text){
+                JBurbujaChat pane = new JBurbujaChat(msj);
+                jListMensajes.add(pane);
+            }
+            if (msj.tipo == TypeMenssage.emocion){
+                jListMensajes.add(new JBurbujaEmoticon(msj));
+            }
+        }
+        jListMensajes.repaint();
+        jListMensajes.validate();
     }
 
     /**
@@ -50,49 +76,158 @@ public class JChat extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btn_voz = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
+        jListMensajes = new javax.swing.JPanel();
+        jBurbujaEmoticon1 = new Frames.JBurbujaEmoticon();
+        jBurbujaVoice2 = new Frames.JBurbujaVoice();
+        jBurbujaChat2 = new Frames.JBurbujaChat();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Volver");
+        jButton1.setBackground(new java.awt.Color(204, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/volver_icon.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setOpaque(false);
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 13, -1, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 50));
 
-        jLabel1.setText("nombre usuario");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 17, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Nombre de Usuario");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, 50));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 597, 211, 51));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 580, 200, 51));
 
-        jButton2.setText("estadistica");
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 90, 50));
+        jButton2.setBackground(new java.awt.Color(204, 255, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Estadistica_icon.png"))); // NOI18N
+        jButton2.setBorder(null);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 60, 50));
 
-        jButton3.setText("jButton2");
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 600, 70, 50));
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 310, 480));
+        btn_voz.setBackground(new java.awt.Color(204, 255, 255));
+        btn_voz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/microfono_icon.png"))); // NOI18N
+        btn_voz.setBorder(null);
+        btn_voz.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_vozMouseClicked(evt);
+            }
+        });
+        add(btn_voz, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 580, 40, 50));
+
+        jListMensajes.setLayout(new javax.swing.BoxLayout(jListMensajes, javax.swing.BoxLayout.PAGE_AXIS));
+        jListMensajes.add(jBurbujaEmoticon1);
+        jListMensajes.add(jBurbujaVoice2);
+        jListMensajes.add(jBurbujaChat2);
+
+        jScrollPane2.setViewportView(jListMensajes);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 340, 500));
+
+        jButton4.setBackground(new java.awt.Color(204, 255, 255));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/emoji_icon.png"))); // NOI18N
+        jButton4.setBorder(null);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 580, 50, 50));
+
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/close_icon.png"))); // NOI18N
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 50, 50));
+
+        jButton6.setBackground(new java.awt.Color(204, 255, 255));
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/send__icon.png"))); // NOI18N
+        jButton6.setBorder(null);
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 580, 50, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
-        Invoker.ChangePanel("Huser");
+        if (Goodmind.user.role == Role.profesional) {
+            Invoker.ChangePanel("Hpro");
+        } else {
+            Invoker.ChangePanel("Huser");
+        }
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Invoker.ChangePanel("est");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        int opt = JOptionPane.showOptionDialog(null,
+                "Seleccione una emocion",
+                "selector de emociones",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                new Object[]{"ansiedad", "ira", "tristeza", "indiferente", "alegre", "exaltado"},
+                "alegre");
+        System.out.println("emocion: " + opt);
+        if (opt != -1) {
+            Goodmind.sendMsj(emociones.values()[opt].name(), TypeMenssage.emocion);
+            Goodmind.user.registro.registrar(emociones.values()[opt]);
+        }
+        setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        Goodmind.CloseChat();
+        Invoker.ChangePanel(Goodmind.user.role == Role.usuario ? "Huser" : "Hpro");
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void btn_vozMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_vozMouseClicked
+        Goodmind.sendMsj("voice", TypeMenssage.voice);
+        setVisible(true);
+    }//GEN-LAST:event_btn_vozMouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        Goodmind.sendMsj(jTextArea1.getText(), TypeMenssage.text);
+        jTextArea1.setText("");
+        setVisible(true);
+    }//GEN-LAST:event_jButton6MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_voz;
+    private Frames.JBurbujaChat jBurbujaChat2;
+    private Frames.JBurbujaEmoticon jBurbujaEmoticon1;
+    private Frames.JBurbujaVoice jBurbujaVoice2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jListMensajes;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
+    DefaultListModel model = new DefaultListModel();
 }

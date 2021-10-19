@@ -14,12 +14,13 @@
                     },
                     {
                         "tipo": "text",
-                        "mensaje": "Buen dia daniel soy tu psicologo compañero, parcero , novia xd",
+                        "mensaje": "Buen dia daniel soy tu psicologo\ncompañero, parcero",
                         "id_remitente": "55ef7250-bf3a-4c46-9d16-ea94f174b212"
                     }
                 ],
                 "activo": true,
-                "ChatUser": "daniel"
+                "ChatUser": "daniel",
+                "id_remitente": "55ef7250-bf3a-4c46-9d16-ea94f174b212"
             }
         ],
         "notificacion": false,
@@ -46,7 +47,7 @@
         "id": "b8a20c3c-8cb1-4309-bf63-8445b74ede24",
         "nombre": "carlos",
         "role": "profesional",
-        "state": false,
+        "state": true,
         "conversaciones": [],
         "notificacion": false,
         "registro": {
@@ -70,34 +71,20 @@
                     },
                     {
                         "tipo": "text",
-                        "mensaje": "Buen dia daniel soy tu psicologo compañero, parcero , novia xd",
+                        "mensaje": "Buen dia daniel soy tu psicologo\ncompañero, parcero",
                         "id_remitente": "55ef7250-bf3a-4c46-9d16-ea94f174b212"
                     }
                 ],
                 "activo": true,
-                "ChatUser": "felipe"
-            },
-            {
-                "chat": [
-                    {
-                        "tipo": "text",
-                        "mensaje": "hola amigo mio",
-                        "id_remitente": "a62d8ad0-9483-4df2-8ef4-52404bf946b6"
-                    },
-                    {
-                        "tipo": "text",
-                        "mensaje": "Buen dia daniel soy tu psicologo compañero, parcero , novia xd",
-                        "id_remitente": "55ef7250-bf3a-4c46-9d16-ea94f174b212"
-                    }
-                ],
-                "activo": true,
-                "ChatUser": "felipe"
+                "ChatUser": "felipe",
+                "id_remitente": "a62d8ad0-9483-4df2-8ef4-52404bf946b6"
             },
             {
                 "chat": [
                 ],
                 "activo": false,
-                "ChatUser": "valentina"
+                "ChatUser": "valentina",
+                "id_remitente": "9716d903-e965-4445-aff1-0579c51e826b"
             }
         ],
         "notificacion": false,

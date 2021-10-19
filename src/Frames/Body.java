@@ -24,7 +24,10 @@ public class Body extends javax.swing.JFrame {
         Invoker.Layouts.add(new Pages("Huser", jHomeuser1));
         Invoker.Layouts.add(new Pages("chat", jChat1));
         Invoker.Layouts.add(new Pages("Hpro", jhomepro1));
+        Invoker.Layouts.add(new Pages("consultorios", jconsultorio1));
+        Invoker.Layouts.add(new Pages("register", jRegister1));
         Invoker.ChangePanel("inicio");
+
     }
 
     /**
@@ -41,15 +44,32 @@ public class Body extends javax.swing.JFrame {
         jChat1 = new Frames.JChat();
         jHomeuser1 = new Frames.JHomeuser();
         jhomepro1 = new Frames.Jhomepro();
+        jconsultorio1 = new Frames.Jconsultorios();
+        jRegister1 = new Frames.jRegister();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GOOD MIND");
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        home1.setMaximumSize(new java.awt.Dimension(360, 640));
+        home1.setMinimumSize(new java.awt.Dimension(360, 640));
+        home1.setPreferredSize(new java.awt.Dimension(360, 640));
         getContentPane().add(home1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        estadisticas1.setPreferredSize(new java.awt.Dimension(360, 640));
         getContentPane().add(estadisticas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jChat1.setPreferredSize(new java.awt.Dimension(360, 640));
         getContentPane().add(jChat1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jHomeuser1.setPreferredSize(new java.awt.Dimension(360, 640));
         getContentPane().add(jHomeuser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jhomepro1.setPreferredSize(new java.awt.Dimension(360, 640));
         getContentPane().add(jhomepro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jconsultorio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jRegister1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -60,6 +80,8 @@ public class Body extends javax.swing.JFrame {
     public static Frames.Home home1;
     private static Frames.JChat jChat1;
     private static Frames.JHomeuser jHomeuser1;
+    private Frames.jRegister jRegister1;
+    private Frames.Jconsultorios jconsultorio1;
     public static Frames.Jhomepro jhomepro1;
     // End of variables declaration//GEN-END:variables
 }

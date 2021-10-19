@@ -6,6 +6,8 @@
 package app.CommandPattern;
 
 import Frames.Body;
+import app.Goodmind;
+import app.Role;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +30,7 @@ public class Invoker {
         prevView = currentView;
         currentView = name;
         Layouts.forEach((e) -> {
-            System.out.println(e.panel);
+            //System.out.println(e.panel);
             e.panel.setVisible(e.name.equals(name));
         });
         //Body.home1.setVisible(false);
@@ -37,13 +39,25 @@ public class Invoker {
 
     public static void Back() {
         System.out.println(prevView);
+        if (currentView.equals("chat")){
+            if (Goodmind.user.role == Role.profesional){
+                ChangePanel("Hpro");
+            }
+            if (Goodmind.user.role == Role.usuario){
+                ChangePanel("Hpro");
+            }
+            return;
+        }
+        
         Layouts.forEach((e) -> {
             if (e.name.equals(prevView)) {
                 e.panel.setVisible(true);
+                currentView = e.name;
             } else if (e.name.equals(currentView)) {
                 e.panel.setVisible(false);
             }
         });
+        
         //Body.home1.setVisible(true);
         //Body.estadisticas1.setVisible(false);
     }

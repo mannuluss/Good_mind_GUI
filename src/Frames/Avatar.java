@@ -14,13 +14,19 @@ import javax.swing.ImageIcon;
  * @author Mannulus
  */
 public class Avatar extends javax.swing.JPanel {
+
     public String path;
-    public Avatar(String img) {
-        this.setSize(50, 50); //se selecciona el tamaño del panel
+
+    public Avatar(String img, int width, int height) {
+        this.setSize(width, height); //se selecciona el tamaño del panel
         path = img;
     }
 
-//Se crea un método cuyo parámetro debe ser un objeto Graphics
+    public Avatar(String img) {
+        this(img,50,50);
+    }
+    //Se crea un método cuyo parámetro debe ser un objeto Graphics
+
     public void paint(Graphics grafico) {
         Dimension height = getSize();
 

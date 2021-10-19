@@ -5,6 +5,9 @@
  */
 package Frames;
 
+import app.CommandPattern.Invoker;
+import app.Goodmind;
+import java.awt.Color;
 import java.awt.LayoutManager;
 import java.util.Locale;
 
@@ -20,7 +23,7 @@ public class JContacto extends javax.swing.JPanel {
     public JContacto() {
         initComponents();
 
-        jPanel1.add(new Avatar("./User-avatar.svg.png"));
+        jPanel1.add(new Avatar("/Images/ranita_kawaii_icon.png"));
     }
     public void setIcon(){
         
@@ -36,11 +39,23 @@ public class JContacto extends javax.swing.JPanel {
 
         name = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        icon_active = new javax.swing.JLabel();
+
+        setMaximumSize(new java.awt.Dimension(294, 76));
+        setMinimumSize(new java.awt.Dimension(294, 76));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
 
         name.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         name.setText("nombre usuario");
 
-        jPanel1.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel1.setBackground(new java.awt.Color(204, 0, 204));
         jPanel1.setPreferredSize(new java.awt.Dimension(50, 50));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -54,6 +69,8 @@ public class JContacto extends javax.swing.JPanel {
             .addGap(0, 50, Short.MAX_VALUE)
         );
 
+        icon_active.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/green_icon.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -63,7 +80,9 @@ public class JContacto extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(name)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(icon_active)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,14 +90,29 @@ public class JContacto extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(name))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(icon_active)
+                        .addComponent(name)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        //Goodmind.SeccionChat(Chatfrom, ChatDestino);
+        System.out.println("Frames.JContacto.formMouseClicked()");
+        Goodmind.setCurrentChat(name_user);
+        Invoker.ChangePanel("chat");
+    }//GEN-LAST:event_formMouseClicked
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        setBackground(new Color(0, 204, 255));
+    }//GEN-LAST:event_formMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel icon_active;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JLabel name;
     // End of variables declaration//GEN-END:variables
+    public String name_user = "";
 }

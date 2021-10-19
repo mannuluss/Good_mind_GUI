@@ -42,6 +42,7 @@ public class Server {
                 Conversacion c = new Conversacion();
                 c.ChatUser = obj.getString("ChatUser");
                 c.activo = obj.getBoolean("activo");
+                c.id_remitente = obj.getString("id_remitente");
 
                 JSONArray arraymsj = obj.getJSONArray("chat");
                 for (int k = 0; k < arraymsj.toList().size(); k++) {
@@ -88,7 +89,7 @@ public class Server {
             if (object.getString("ubicacion").equals(ubicacion)) {
                 consultorio item = new consultorio();
                 item.nombre = object.getString("nombre");
-                item.descripcion = object.getString("descripcion");
+                item.telefono = object.getString("telefono");
                 item.ubicacion = object.getString("ubicacion");
                 locations.add(item);
             }

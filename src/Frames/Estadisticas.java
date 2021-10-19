@@ -6,6 +6,13 @@
 package Frames;
 
 import app.CommandPattern.Invoker;
+import app.Goodmind;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -22,6 +29,40 @@ public class Estadisticas extends javax.swing.JPanel {
         initComponents();
     }
 
+    public void PaintPastel() {
+        if (Goodmind.user == null) {
+            return;
+        }
+        jPanel2.removeAll();
+        // Fuente de Datos
+        DefaultPieDataset data = new DefaultPieDataset();
+        data.setValue("negativos", Goodmind.user.registro.negativos);
+        valuemenos.setText(String.valueOf(Goodmind.user.registro.negativos));
+        data.setValue("positivos", Goodmind.user.registro.positivos);
+        valueplus.setText(String.valueOf(Goodmind.user.registro.positivos));
+        data.setValue("neutros", Goodmind.user.registro.neutros);
+        valueneutral.setText(String.valueOf(Goodmind.user.registro.neutros));
+        
+        total.setText("Total: "+String.valueOf(Goodmind.user.registro.GetTotal()));
+
+        // Creando el Grafico
+        JFreeChart chart = ChartFactory.createPieChart(
+                "Estadisticas",
+                data,
+                false,
+                true,
+                false);
+
+        // Crear el Panel del Grafico con ChartPanel
+        ChartPanel chartPanel = new ChartPanel(chart);
+        chartPanel.setMouseWheelEnabled(true);
+        chartPanel.setPreferredSize(new Dimension(272, 257));
+        jPanel2.setLayout(new BorderLayout());
+        jPanel2.add(chartPanel, BorderLayout.CENTER);
+        //pack();
+        repaint();
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,35 +72,51 @@ public class Estadisticas extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        notify = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        valuemenos = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        valueplus = new javax.swing.JLabel();
+        valueneutral = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        total = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(20, 148, 210));
+        setBackground(new java.awt.Color(204, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Regresar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        notify.setBackground(new java.awt.Color(255, 255, 153));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jLabel2.setText("se le recomienda ayuda profesional,");
+
+        jLabel3.setText("mas informacion click en el boton de abajo");
+
+        javax.swing.GroupLayout notifyLayout = new javax.swing.GroupLayout(notify);
+        notify.setLayout(notifyLayout);
+        notifyLayout.setHorizontalGroup(
+            notifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(notifyLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(notifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+        notifyLayout.setVerticalGroup(
+            notifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(notifyLayout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        add(notify, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 300, 70));
 
         jPanel2.setBackground(new java.awt.Color(20, 148, 210));
 
@@ -67,41 +124,101 @@ public class Estadisticas extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 156, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 152, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(110, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(94, 94, 94))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 357, Short.MAX_VALUE))
-        );
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 290, 230));
+
+        jButton2.setText("consultorios psicologicos en tu zona");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 250, 40));
+
+        valuemenos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        valuemenos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        valuemenos.setText("Negativos");
+        add(valuemenos, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 510, 90, -1));
+
+        jButton1.setBackground(new java.awt.Color(0, 153, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/volver_icon.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setOpaque(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 50));
+
+        valueplus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        valueplus.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        valueplus.setText("Positivos");
+        add(valueplus, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 410, 90, -1));
+
+        valueneutral.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        valueneutral.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        valueneutral.setText("Neutros");
+        add(valueneutral, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, 90, -1));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setText("Positivos");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 190, -1));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel7.setText("Positivos");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 90, -1));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel8.setText("Neutros");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, 90, -1));
+
+        total.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        total.setText("Total:");
+        add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 570, 90, -1));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setText("Negativos");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, 90, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Invoker.Back();
+        Invoker.ChangePanel("Huser");
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Invoker.ChangePanel("consultorios");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    @Override
+    public void setVisible(boolean v) {
+        super.setVisible(v);
+        PaintPastel();
+        if (Goodmind.user != null){
+            notify.setVisible(Goodmind.user.notificacion);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel notify;
+    private javax.swing.JLabel total;
+    private javax.swing.JLabel valuemenos;
+    private javax.swing.JLabel valueneutral;
+    private javax.swing.JLabel valueplus;
     // End of variables declaration//GEN-END:variables
 }

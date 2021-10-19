@@ -39,71 +39,108 @@ public class Jhomepro extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        togglechat = new javax.swing.JToggleButton();
+        togglebaul = new javax.swing.JToggleButton();
         jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JPanel();
+        jContacto1 = new Frames.JContacto();
 
-        jToggleButton1.setSelected(true);
-        jToggleButton1.setText("Chat");
+        setBackground(new java.awt.Color(204, 255, 255));
 
-        jToggleButton2.setText("baul");
+        togglechat.setBackground(new java.awt.Color(204, 255, 255));
+        togglechat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/chat_icon.png"))); // NOI18N
+        togglechat.setSelected(true);
+        togglechat.setBorder(null);
+        togglechat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                togglechatActionPerformed(evt);
+            }
+        });
 
-        jButton1.setBackground(new java.awt.Color(255, 51, 51));
-        jButton1.setText("salir");
+        togglebaul.setBackground(new java.awt.Color(204, 255, 255));
+        togglebaul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/baul_icon.png"))); // NOI18N
+        togglebaul.setBorder(null);
+        togglebaul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                togglebaulActionPerformed(evt);
+            }
+        });
+
+        jButton1.setBackground(new java.awt.Color(204, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logout_icon.png"))); // NOI18N
+        jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jList1.setModel(model);
-        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jList1.setCellRenderer(new PanelRenderer());
-        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jList1MouseClicked(evt);
-            }
-        });
-        jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                jList1ValueChanged(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jList1);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/good_text.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setText("CHAT");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("BAÚL");
+
+        jList1.setLayout(new javax.swing.BoxLayout(jList1, javax.swing.BoxLayout.PAGE_AXIS));
+        jList1.add(jContacto1);
+
+        jScrollPane2.setViewportView(jList1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(togglechat, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                        .addComponent(togglebaul, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(47, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(87, 87, 87))))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(26, Short.MAX_VALUE))
+                        .addGap(26, 26, 26)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(togglechat, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(togglebaul, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -111,41 +148,81 @@ public class Jhomepro extends javax.swing.JPanel {
         Invoker.ChangePanel("inicio");
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
-        // TODO add your handling code here:
-        System.out.println("Change value list");
-    }//GEN-LAST:event_jList1ValueChanged
+    private void togglechatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togglechatActionPerformed
+        setBaul(false);
+    }//GEN-LAST:event_togglechatActionPerformed
 
-    private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
-       Invoker.ChangePanel("chat");
-       System.out.println("Change value list");
-    }//GEN-LAST:event_jList1MouseClicked
+    private void togglebaulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togglebaulActionPerformed
+        setBaul(true);
+    }//GEN-LAST:event_togglebaulActionPerformed
     @Override
     public void setVisible(boolean v) {
+        if (v) {
+            setChats();
+        }
         super.setVisible(v);
-        model.clear();
-        if (Goodmind.user != null) {
-            for (Conversacion chat : Goodmind.user.conversaciones) {
-                JContacto pane = new JContacto();
-                pane.name.setText(chat.ChatUser);
-                model.addElement(pane);
+    }
+
+    public void setChats() {
+        jList1.removeAll();
+        if (Goodmind.user == null) {
+            return;
+        }
+        //model.clear();
+        //JPanel[] jpanels = new JPanel[Goodmind.user.conversaciones.size()];
+
+        for (Conversacion chat : Goodmind.user.conversaciones) {
+            if (baul) {
+                if (!chat.activo) {
+                    JContacto pane = new JContacto();
+                    pane.name.setText(chat.ChatUser);
+                    pane.name_user = chat.ChatUser;
+                    pane.icon_active.setVisible(false);
+                    jList1.add(pane);
+                }
+            } else {
+                if (chat.activo) {
+                    JContacto pane = new JContacto();
+                    pane.name.setText(chat.ChatUser);
+                    pane.name_user = chat.ChatUser;
+                    pane.icon_active.setVisible(true);
+                    jList1.add(pane);
+                }
             }
         }
-        JList<JPanel> lista = new JList();
-        lista.setModel(model);
-        lista.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        lista.setCellRenderer(new PanelRenderer());
-        jScrollPane1.setViewportView(lista);
+        jList1.repaint();
+        jList1.validate();
 
+        //int row = i < 5 ? 5 : i;
+        //jList1.setLayout(new java.awt.GridLayout(row, 1));
+        /*JList<JPanel> lista = new JList();
+        lista.setModel(model);
+        lista.setListData(jpanels);*/
+        //lista.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        //lista.setCellRenderer(new PanelRenderer());
+        //jScrollPane1.setViewportView(lista);
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
+    private Frames.JContacto jContacto1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jList1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JToggleButton togglebaul;
+    private javax.swing.JToggleButton togglechat;
     // End of variables declaration//GEN-END:variables
     DefaultListModel model = new DefaultListModel();
+    private boolean baul = false;
+
+    public void setBaul(boolean val) {
+        baul = val;
+        togglebaul.setSelected(val);
+        togglechat.setSelected(!val);
+        setChats();//actuliza la lista
+    }
 }
 
 class PanelRenderer implements ListCellRenderer {
@@ -153,7 +230,7 @@ class PanelRenderer implements ListCellRenderer {
     @Override
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
         JPanel renderer = (JPanel) value;
-        renderer.setBackground(isSelected ? Color.BLUE : list.getBackground());
+        renderer.setBackground(isSelected ? new Color(0, 204, 255) : list.getBackground());//renderer.getBackground()
         return renderer;
     }
 }
